@@ -42,7 +42,8 @@
       <v-icon color="black">mdi-account</v-icon>
     </v-btn>
     <v-btn fab color="yellow" elevation="0" small class="mx-2" @click="drawer=!drawer">
-      <v-icon color="black">mdi-menu</v-icon>
+      <v-icon v-if="drawer==false" color="black">mdi-menu</v-icon>
+      <v-icon v-else color="black">mdi-close</v-icon>
     </v-btn>
   </v-app-bar>
 
@@ -97,7 +98,7 @@
 export default {
   name: 'Navbar',
   data: () => ({
-    drawer:true,
+    drawer:false,
     selectedItem:null,
     links:[
       {icon:"mdi-view-dashboard",text:"DASHBOARD",route:"/"},
