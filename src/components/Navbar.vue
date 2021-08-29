@@ -15,7 +15,7 @@
     <v-menu offset-y  depressed >
       <template v-slot:activator="{on,attrs}" justify="space-around">
             <v-btn fab color="yellow" elevation="0" small class="mx-2" v-bind="attrs" v-on="on">
-              <v-icon color="black">mdi-bell</v-icon>
+              <v-icon color="black">mdi-bell-outline</v-icon>
             </v-btn>
       </template>
       <v-list class="yellow lighten-3 " rounded>
@@ -39,7 +39,7 @@
 
 <!--Account  -->
     <v-btn fab color="yellow" elevation="0" small class="mx-2" @click="drawer=!drawer">
-      <v-icon color="black">mdi-account</v-icon>
+      <v-icon color="black">mdi-account-outline</v-icon>
     </v-btn>
     <v-btn fab color="yellow" elevation="0" small class="mx-2" @click="drawer=!drawer">
       <v-icon v-if="drawer==false" color="black">mdi-menu</v-icon>
@@ -65,7 +65,7 @@
             <v-list-item-content class="ml-4 pb-0">
             <p>
               <v-icon left v-text="link.icon"></v-icon>
-              <b>{{link.text}}</b>
+              {{link.text}}
             </p>
             </v-list-item-content>
         </v-list-item>
@@ -102,11 +102,11 @@ export default {
     selectedItem:null,
     links:[
       {icon:"mdi-view-dashboard",text:"DASHBOARD",route:"/"},
-      {icon:"mdi-shopping",text:"PRODUCTS",route:"/products"},
+      {icon:"mdi-shopping-outline",text:"PRODUCTS",route:"/products"},
       {icon:"mdi-upload",text:"Inventory",route:"/upload-inventory"},
-      {icon:"mdi-account",text:"ACCOUNT",route:"/account"},
+      {icon:"mdi-account-outline",text:"ACCOUNT",route:"/account"},
         {icon:"mdi-archive-arrow-down-outline",text:"ORDERS",route:"/orders"},
-      {icon:"mdi-account-multiple",text:"CUSTOMERS",route:"/customers"},
+      {icon:"mdi-account-multiple-outline",text:"CUSTOMERS",route:"/customers"},
       {icon:"mdi-blogger",text:"BLOGS",route:"/blogs"},
 
     ],
@@ -116,3 +116,10 @@ export default {
   }),
 };
 </script>
+
+
+<style media="screen">
+  .nav-list{
+    border-left:3px solid white;
+  }
+</style>

@@ -4,16 +4,16 @@
     <div class="pa-1 ma-5">
       <v-row class="">
 
-        <v-col cols="12" md="3" sm="6" xsm="6">
+        <v-col cols="12" md="3" sm="6" xsm="6" v-for="(product,i) in samples"  :key="i">
           <v-hover v-slot="{ hover }">
              <v-card class="mx-auto" color="grey lighten-4">
               <v-img :aspect-ratio="13/16"
-               src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/1700944/2019/6/8/972c9498-3a37-4d5d-976c-4493b4d5c0021559989322793-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--1.jpg"
+               :src="product.image1"
               >
                   <v-expand-transition>
                   <div v-if="hover" class="d-flex transition-fast-in-fast-out yellow darken-2 v-card--reveal text-h2 white--text"   style="height: 100%;" >
                    <v-card height="100">
-                     <img src="https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/1700944/2019/6/8/67f8fc06-3131-4ae9-a869-2b485f0aca3c1559989322742-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--4.jpg" alt="" style="width:100%;">
+                     <img :src="product.image2" alt="" style="width:100%;">
                    </v-card>
                   </div>
                  </v-expand-transition>
@@ -46,7 +46,7 @@
 
 
                  <v-dialog
-                   v-model="dialog"
+                   v-model="dialog[i]"
                    width="500"
                  >
                    <template v-slot:activator="{ on, attrs }">
@@ -66,48 +66,26 @@
 
                    <v-card>
                      <v-card-title class="text-h5 grey lighten-2">
-                    HRX by Hrithik Roshan
+                  {{product.title}}
                      </v-card-title>
 
                      <template>
                         <v-carousel
-                          cycle
-                          height="400"
                           hide-delimiter-background
                           show-arrows-on-hover
                         >
                           <v-carousel-item >
-                            <v-sheet
-                              color="yellow"
-                              height="100%"
-                            >
-                              <v-row
-                                class="fill-height"
-                                align="center"
-                                justify="center"
-                              >
-                                <div class="text-h2">
-
-                                  Image 1
+                            <v-sheet>
+                                <div class="text-h2 pa-2">
+                                 <v-img :src="product.image1" style="height:100%"></v-img>
                                 </div>
-                              </v-row>
                             </v-sheet>
                           </v-carousel-item>
-
                           <v-carousel-item >
-                            <v-sheet
-                              color="green"
-                              height="100%"
-                            >
-                              <v-row
-                                class="fill-height"
-                                align="center"
-                                justify="center"
-                              >
-                                <div class="text-h2">
-                                  Image2
+                            <v-sheet>
+                                <div class="text-h2 pa-2">
+                                 <v-img :src="product.image2" style="height:100%"></v-img>
                                 </div>
-                              </v-row>
                             </v-sheet>
                           </v-carousel-item>
 
@@ -149,8 +127,45 @@ export default {
   data () {
     return {
       products: null,
-      dialog: false,
+      dialog:[],
       product_images: null,
+      samples:[
+        {
+          title:"MENs & WOMENs",
+          dialog:"Dialog1",
+          product:"product1",
+          image1:"https://assets.ajio.com/medias/sys_master/root/20210514/T01n/609e7c45f997ddb3129e999c/-473Wx593H-461571257-blue-MODEL.jpg",
+          image2:"https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/8813111/2019/3/2/ef1a1886-d64b-4936-8deb-a3608d98d54f1551509479668-Moda-Rapido-Women-Tshirts-1591551509477992-1.jpg"
+        },
+        {
+          title:"MENs & WOMENs",
+          dialog:"Dialog2",
+          product:"product2",
+          image1:"https://assets.ajio.com/medias/sys_master/root/20210514/T01n/609e7c45f997ddb3129e999c/-473Wx593H-461571257-blue-MODEL.jpg",
+          image2:"https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/8813111/2019/3/2/ef1a1886-d64b-4936-8deb-a3608d98d54f1551509479668-Moda-Rapido-Women-Tshirts-1591551509477992-1.jpg"
+        },
+        {
+          title:"MENs & WOMENs ",
+          dialog:"Dialog3",
+          product:"product3",
+          image1:"https://assets.ajio.com/medias/sys_master/root/20210514/T01n/609e7c45f997ddb3129e999c/-473Wx593H-461571257-blue-MODEL.jpg",
+          image2:"https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/8813111/2019/3/2/ef1a1886-d64b-4936-8deb-a3608d98d54f1551509479668-Moda-Rapido-Women-Tshirts-1591551509477992-1.jpg"
+        },
+        {
+          title:"MENs & WOMENs",
+          dialog:"Dialog4",
+          product:"product4",
+          image1:"https://assets.ajio.com/medias/sys_master/root/20210514/T01n/609e7c45f997ddb3129e999c/-473Wx593H-461571257-blue-MODEL.jpg",
+          image2:"https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/8813111/2019/3/2/ef1a1886-d64b-4936-8deb-a3608d98d54f1551509479668-Moda-Rapido-Women-Tshirts-1591551509477992-1.jpg"
+        },
+        {
+          title:"MENs & WOMENs",
+          dialog:"Dialog5",
+          product:"product5",
+          image1:"https://assets.ajio.com/medias/sys_master/root/20210514/T01n/609e7c45f997ddb3129e999c/-473Wx593H-461571257-blue-MODEL.jpg",
+          image2:"https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/8813111/2019/3/2/ef1a1886-d64b-4936-8deb-a3608d98d54f1551509479668-Moda-Rapido-Women-Tshirts-1591551509477992-1.jpg"
+        },
+      ]
     }
   },
 
