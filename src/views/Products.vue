@@ -4,22 +4,22 @@
     <div class="pa-1 ma-5">
       <v-row class="">
 
-        <v-col cols="12" md="3" sm="6" xsm="6" v-for="(product,i) in samples"  :key="i">
+        <v-col cols="12" md="3" sm="6" xsm="6" v-for="(product,i) in products"  :key="i">
           <v-hover v-slot="{ hover }">
              <v-card class="mx-auto" color="grey lighten-4">
               <v-img :aspect-ratio="13/16"
-               :src="product.image1"
+               :src="product.imageFront"
               >
                   <v-expand-transition>
                   <div v-if="hover" class="d-flex transition-fast-in-fast-out yellow darken-2 v-card--reveal text-h2 white--text"   style="height: 100%;" >
                    <v-card height="100">
-                     <img :src="product.image2" alt="" style="width:100%;">
+                     <img :src="product.imageBack" alt="" style="width:100%;">
                    </v-card>
                   </div>
                  </v-expand-transition>
               </v-img>
 
-            <v-card-title>HRX by Hrithik Roshan</v-card-title>
+            <v-card-title>{{product.title}}</v-card-title>
 
 
              <v-card-text>
@@ -77,14 +77,14 @@
                           <v-carousel-item >
                             <v-sheet>
                                 <div class="text-h2 pa-2">
-                                 <v-img :src="product.image1" style="height:100%"></v-img>
+                                 <v-img :src="product.imageFront" style="height:100%"></v-img>
                                 </div>
                             </v-sheet>
                           </v-carousel-item>
                           <v-carousel-item >
                             <v-sheet>
                                 <div class="text-h2 pa-2">
-                                 <v-img :src="product.image2" style="height:100%"></v-img>
+                                 <v-img :src="product.imageBack" style="height:100%"></v-img>
                                 </div>
                             </v-sheet>
                           </v-carousel-item>
@@ -95,16 +95,6 @@
                        <b>Description</b>
                      </v-card-text>
                      <v-divider></v-divider>
-                     <v-card-actions>
-                       <v-spacer></v-spacer>
-                       <v-btn
-                         color="primary"
-                         text
-                         @click="dialog = false"
-                       >
-                         I accept
-                       </v-btn>
-                     </v-card-actions>
                    </v-card>
                  </v-dialog>
               </v-card-actions>
@@ -129,6 +119,7 @@ export default {
       products: null,
       dialog:[],
       product_images: null,
+      products:null,
       samples:[
         {
           title:"MENs & WOMENs",
@@ -171,15 +162,15 @@ export default {
 
 
 /***** API CALL ***/
-mounted(){
- axios
- .get('http://localhost:3000/api/products')
- .then(result => {
-   this.products = result.data
-   console.log(result.data)
-   this.products=result.data
- })
-}
+    mounted(){
+     axios
+     .get('http://localhost:3000/api/products')
+     .then(result => {
+       this.products = result.data
+       console.log(result.data)
+       this.products=result.data
+     })
+    }
 
 
 }
